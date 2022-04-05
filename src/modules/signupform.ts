@@ -1,6 +1,7 @@
 import * as MRE from "@microsoft/mixed-reality-extension-sdk";
 import { Text, User } from "@microsoft/mixed-reality-extension-sdk";
 import dotenv from "dotenv";
+import PlayerManager from './playerManager';
 
 const BUTTON_HEIGHT = 0.6;
 
@@ -22,7 +23,7 @@ export default class SignupForm {
     private infoText : any;
     public whiteButtonModel: MRE.Actor;
     private currentHost: MRE.User = null;
-
+    private playerManger = new PlayerManager;
 
     public cleanup() {
         this.assets.unload();
@@ -181,6 +182,8 @@ export default class SignupForm {
     iconHover.onHover(
       "hovering", 
       (user:any) => {
+        if(user.id === this.currentHost.id && this.playerManger.isMod(user))
+        {
           console.log("hovering");
           const mat = this.assets.createMaterial("previewMaterial", {color: MRE.Color3.White()})
           this.whiteButtonModel = MRE.Actor.CreateFromGltf(this.assets, {
@@ -201,6 +204,7 @@ export default class SignupForm {
           },
         });         
       }
+        }
     )
     iconHover.onHover(
       "exit", 
