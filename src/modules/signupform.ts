@@ -181,8 +181,6 @@ export default class SignupForm {
     iconHover.onHover(
       "hovering", 
       (user:any) => {
-        if(!this.whiteButtonModel)
-        {
           console.log("hovering");
           const mat = this.assets.createMaterial("previewMaterial", {color: MRE.Color3.White()})
           this.whiteButtonModel = MRE.Actor.CreateFromGltf(this.assets, {
@@ -201,8 +199,7 @@ export default class SignupForm {
              },
             parentId: this.eraseButton.id,
           },
-        }); 
-        }          
+        });         
       }
     )
     iconHover.onHover(
