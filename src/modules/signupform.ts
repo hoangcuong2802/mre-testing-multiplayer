@@ -238,6 +238,7 @@ export default class SignupForm {
           Enter your name and click "OK"
           (e.g. David).`, true)
       .then(res => {
+        
         if(this.playerManger.isMod(user))
         {
           if(res.submitted && res.text.length > 0){
@@ -286,7 +287,7 @@ export default class SignupForm {
           (e.g. abc@gmail.com).`, true)
       .then(res => {
         for (const p of this.playerManger.playerList) {
-          if (user.id === p.id) {
+          if (p.id === user.id) {
               if(res.submitted && res.text.length > 0){
               MRE.Actor.Create(this.context, {
               actor: {
@@ -334,10 +335,10 @@ export default class SignupForm {
           Enter your contact number and click "OK"
           (e.g. 084-3214-144).`, true)
       .then(res => {
-
           if(res.submitted && res.text.length > 0){
             MRE.Actor.Create(this.context, {
               actor: {
+                exclusiveToUser: user.id,
                 name: 'ResultLabel',
                 parentId: this.eraseButton.id,
                 transform: { local: { position: { x: -2.0, y: -0.45, z: -0.1  } } },

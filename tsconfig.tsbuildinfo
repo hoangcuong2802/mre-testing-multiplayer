@@ -1197,7 +1197,7 @@
         "affectsGlobalScope": false
       },
       "./src/modules/signupform.ts": {
-        "version": "ecf6485618fed1cccfec528dd6e5bd11cda4766ee9fb3553d46518e167ce914c",
+        "version": "cc39f7b88fbba714d6b1d68bb8a397661cd2380f3c7df3d91a48fde649dbb575",
         "signature": "83ad116f0b8e9960b44099e807a8c42777bf756e6f13aab7d4bb4412265ca7df",
         "affectsGlobalScope": false
       },
