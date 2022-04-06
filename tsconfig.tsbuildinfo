@@ -1197,7 +1197,7 @@
         "affectsGlobalScope": false
       },
       "./src/modules/signupform.ts": {
-        "version": "07f6a59d36a159a4a74d02535f5a71d6ff85ec67bd84cab63be6d7127b46e515",
+        "version": "ecf6485618fed1cccfec528dd6e5bd11cda4766ee9fb3553d46518e167ce914c",
         "signature": "83ad116f0b8e9960b44099e807a8c42777bf756e6f13aab7d4bb4412265ca7df",
         "affectsGlobalScope": false
       },
@@ -1269,8 +1269,6 @@
       "strictNullChecks": false,
       "moduleResolution": 2,
       "esModuleInterop": true,
-      "watch": true,
-      "preserveWatchOutput": true,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {

@@ -262,25 +262,29 @@ class SignupForm {
           Enter your email and click "OK"
           (e.g. abc@gmail.com).`, true)
                 .then(res => {
-                if (res.submitted && res.text.length > 0) {
-                    MRE.Actor.Create(this.context, {
-                        actor: {
-                            name: 'ResultLabel',
-                            parentId: this.eraseButton.id,
-                            transform: { local: { position: { x: -2.0, y: -.1, z: -0.1 } } },
-                            text: {
-                                contents: res.text,
-                                height: .1,
-                                anchor: MRE.TextAnchorLocation.MiddleLeft,
-                                color: MRE.Color3.White()
-                            }
+                for (const p of this.playerManger.playerList) {
+                    if (user.id === p.id) {
+                        if (res.submitted && res.text.length > 0) {
+                            MRE.Actor.Create(this.context, {
+                                actor: {
+                                    name: 'ResultLabel',
+                                    parentId: this.eraseButton.id,
+                                    transform: { local: { position: { x: -2.0, y: -.1, z: -0.1 } } },
+                                    text: {
+                                        contents: res.text,
+                                        height: .1,
+                                        anchor: MRE.TextAnchorLocation.MiddleLeft,
+                                        color: MRE.Color3.White()
+                                    }
+                                }
+                            });
+                            //this.infoText.text.contents = this.resultMessageFor(res.text);
+                            //this.search(res.text);
                         }
-                    });
-                    //this.infoText.text.contents = this.resultMessageFor(res.text);
-                    //this.search(res.text);
-                }
-                else {
-                    // user clicked 'Cancel'
+                        else {
+                            // user clicked 'Cancel'
+                        }
+                    }
                 }
             })
                 .catch(err => {

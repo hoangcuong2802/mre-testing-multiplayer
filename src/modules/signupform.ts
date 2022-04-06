@@ -285,8 +285,10 @@ export default class SignupForm {
           Enter your email and click "OK"
           (e.g. abc@gmail.com).`, true)
       .then(res => {
-          if(res.submitted && res.text.length > 0){
-            MRE.Actor.Create(this.context, {
+        for (const p of this.playerManger.playerList) {
+          if (user.id === p.id) {
+              if(res.submitted && res.text.length > 0){
+              MRE.Actor.Create(this.context, {
               actor: {
                 name: 'ResultLabel',
                 parentId: this.eraseButton.id,
@@ -305,7 +307,8 @@ export default class SignupForm {
           else{
             // user clicked 'Cancel'
           }
-
+        }
+      }
       })
       .catch(err => {
         console.error(err);
