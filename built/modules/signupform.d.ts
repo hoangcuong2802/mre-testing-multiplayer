@@ -15,6 +15,7 @@ export default class SignupForm {
     private infoText;
     whiteButtonModel: MRE.Actor;
     private currentHost;
+    private playerManger;
     cleanup(): void;
     constructor(context: MRE.Context);
     started(): Promise<void>;

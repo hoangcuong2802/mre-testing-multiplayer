@@ -1181,24 +1181,39 @@
         "signature": "bd30f27645e63b7ecfdba60baf818057d5a32bd341ab433985a98d95b1b492af",
         "affectsGlobalScope": false
       },
-      "./src/modules/whiteboard.ts": {
-        "version": "874a89ff636a7a0d39d4273a6eaff32c5e2831a4fc5cbb6186e4ea84eb90db22",
-        "signature": "7860e12750351cec6a577337b3cb0ed89d7762beb6c2be5656cf148e69c9cbb9",
-        "affectsGlobalScope": false
-      },
       "./node_modules/@types/dotenv/index.d.ts": {
         "version": "2cba9752a0198d6c9cc96bc63463020f6a00de7d8f63cfd6a5eb35975662b09a",
         "signature": "2cba9752a0198d6c9cc96bc63463020f6a00de7d8f63cfd6a5eb35975662b09a",
         "affectsGlobalScope": false
       },
+      "./src/modules/player.ts": {
+        "version": "4f9733ca76882050f107e67b03cf4102b1e80ee84c3f851d7936c5a01e195a9f",
+        "signature": "5557751099a6be855f46fbc007911a4ee36dcb3dcbb80954041082f0738a2e81",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/playermanager.ts": {
+        "version": "47d46489e12fff8598de41f0219e5a5abd0b1db17c57d1eca3c65f5fcbc6a0f2",
+        "signature": "7b801c3c5586df37557cd21779817d9d5beea289b6ef99eefe2ed18920b58eed",
+        "affectsGlobalScope": false
+      },
       "./src/modules/signupform.ts": {
-        "version": "d3734e40a549951d76decc676cba32033526ffbe322aacaed0809caafc3b0b85",
-        "signature": "ec6f41fe91116b9df8f723072d076fe7a199ccce57d301d14e01c6358b085418",
+        "version": "07f6a59d36a159a4a74d02535f5a71d6ff85ec67bd84cab63be6d7127b46e515",
+        "signature": "83ad116f0b8e9960b44099e807a8c42777bf756e6f13aab7d4bb4412265ca7df",
         "affectsGlobalScope": false
       },
       "./src/app.ts": {
-        "version": "4d637462385ee149c2bf3f0e349d9bd3a1b5882a287024d7d3fdada5e2aa5263",
-        "signature": "707ca1d8d9235bbb99219b1f546196e52d8f23658635a97fb0248f7d3301eadd",
+        "version": "916ee08836679e11365ab1ea66ad5721721f962b060a61535156ca5605f97c63",
+        "signature": "d45f50872903e94823a04a16f98267ce81e7316a542757497b7dbbd23223ab62",
+        "affectsGlobalScope": false
+      },
+      "./src/player.ts": {
+        "version": "4f9733ca76882050f107e67b03cf4102b1e80ee84c3f851d7936c5a01e195a9f",
+        "signature": "5557751099a6be855f46fbc007911a4ee36dcb3dcbb80954041082f0738a2e81",
+        "affectsGlobalScope": false
+      },
+      "./src/playermanager.ts": {
+        "version": "47d46489e12fff8598de41f0219e5a5abd0b1db17c57d1eca3c65f5fcbc6a0f2",
+        "signature": "7b801c3c5586df37557cd21779817d9d5beea289b6ef99eefe2ed18920b58eed",
         "affectsGlobalScope": false
       },
       "./src/server.ts": {
@@ -2036,15 +2051,26 @@
       ],
       "./src/app.ts": [
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts",
-        "./src/modules/signupform.ts",
-        "./src/modules/whiteboard.ts"
+        "./src/modules/signupform.ts"
+      ],
+      "./src/modules/player.ts": [
+        "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts"
+      ],
+      "./src/modules/playermanager.ts": [
+        "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts",
+        "./src/modules/player.ts"
       ],
       "./src/modules/signupform.ts": [
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts",
-        "./node_modules/@types/dotenv/index.d.ts"
+        "./node_modules/@types/dotenv/index.d.ts",
+        "./src/modules/playermanager.ts"
       ],
-      "./src/modules/whiteboard.ts": [
+      "./src/player.ts": [
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts"
+      ],
+      "./src/playermanager.ts": [
+        "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts",
+        "./src/player.ts"
       ],
       "./src/server.ts": [
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts",
@@ -2832,11 +2858,22 @@
       "./src/app.ts": [
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts"
       ],
+      "./src/modules/player.ts": [
+        "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts"
+      ],
+      "./src/modules/playermanager.ts": [
+        "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts",
+        "./src/modules/player.ts"
+      ],
       "./src/modules/signupform.ts": [
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts"
       ],
-      "./src/modules/whiteboard.ts": [
+      "./src/player.ts": [
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts"
+      ],
+      "./src/playermanager.ts": [
+        "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts",
+        "./src/player.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -3084,8 +3121,11 @@
       "./node_modules/typescript/lib/lib.es5.d.ts",
       "./node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "./src/app.ts",
+      "./src/modules/player.ts",
+      "./src/modules/playermanager.ts",
       "./src/modules/signupform.ts",
-      "./src/modules/whiteboard.ts",
+      "./src/player.ts",
+      "./src/playermanager.ts",
       "./src/server.ts"
     ]
   },

@@ -18,8 +18,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const MRE = __importStar(require("@microsoft/mixed-reality-extension-sdk"));
+const playerManager_1 = __importDefault(require("./playerManager"));
 const BUTTON_HEIGHT = 0.6;
 class SignupForm {
     constructor(context) {
@@ -28,6 +32,7 @@ class SignupForm {
         this.drawObjects = [];
         this.worldBuildersListEnabled = false;
         this.currentHost = null;
+        this.playerManger = new playerManager_1.default;
         this.assets = new MRE.AssetContainer(context);
     }
     cleanup() {
@@ -166,27 +171,25 @@ class SignupForm {
         });
         const iconHover = blackButtonModel.setBehavior(MRE.ButtonBehavior);
         iconHover.onHover("hovering", (user) => {
-            if (!this.whiteButtonModel) {
-                console.log("hovering");
-                const mat = this.assets.createMaterial("previewMaterial", { color: MRE.Color3.White() });
-                this.whiteButtonModel = MRE.Actor.CreateFromGltf(this.assets, {
-                    uri: `https://cdn-content-ingress.altvr.com/uploads/model/gltf/1972409441848393759/answerButton.glb `,
-                    colliderType: "mesh",
-                    actor: {
-                        name: "Button",
-                        transform: {
-                            local: {
-                                scale: { x: 1, y: 1, z: 1 },
-                                position: { x: -1.5, y: 0.3, z: -0.12 },
-                            },
+            console.log("hovering");
+            const mat = this.assets.createMaterial("previewMaterial", { color: MRE.Color3.White() });
+            this.whiteButtonModel = MRE.Actor.CreateFromGltf(this.assets, {
+                uri: `https://cdn-content-ingress.altvr.com/uploads/model/gltf/1972409441848393759/answerButton.glb `,
+                colliderType: "mesh",
+                actor: {
+                    name: "Button",
+                    transform: {
+                        local: {
+                            scale: { x: 1, y: 1, z: 1 },
+                            position: { x: -1.5, y: 0.3, z: -0.12 },
                         },
-                        appearance: {
-                            materialId: mat.id,
-                        },
-                        parentId: this.eraseButton.id,
                     },
-                });
-            }
+                    appearance: {
+                        materialId: mat.id,
+                    },
+                    parentId: this.eraseButton.id,
+                },
+            });
         });
         iconHover.onHover("exit", (user) => {
             console.log("unhovering");
@@ -215,25 +218,27 @@ class SignupForm {
           Enter your name and click "OK"
           (e.g. David).`, true)
                 .then(res => {
-                if (res.submitted && res.text.length > 0) {
-                    MRE.Actor.Create(this.context, {
-                        actor: {
-                            name: 'ResultLabel',
-                            parentId: this.eraseButton.id,
-                            transform: { local: { position: { x: -2.0, y: 0.2, z: -0.1 } } },
-                            text: {
-                                contents: res.text,
-                                height: .1,
-                                anchor: MRE.TextAnchorLocation.MiddleLeft,
-                                color: MRE.Color3.White()
+                if (this.playerManger.isMod(user)) {
+                    if (res.submitted && res.text.length > 0) {
+                        MRE.Actor.Create(this.context, {
+                            actor: {
+                                name: 'ResultLabel',
+                                parentId: this.eraseButton.id,
+                                transform: { local: { position: { x: -2.0, y: 0.2, z: -0.1 } } },
+                                text: {
+                                    contents: res.text,
+                                    height: .1,
+                                    anchor: MRE.TextAnchorLocation.MiddleLeft,
+                                    color: MRE.Color3.White()
+                                }
                             }
-                        }
-                    });
-                    //this.infoText.text.contents = this.resultMessageFor(res.text);
-                    //this.search(res.text);
-                }
-                else {
-                    // user clicked 'Cancel'
+                        });
+                        //this.infoText.text.contents = this.resultMessageFor(res.text);
+                        //this.search(res.text);
+                    }
+                    else {
+                        // user clicked 'Cancel'
+                    }
                 }
             })
                 .catch(err => {

@@ -182,8 +182,6 @@ export default class SignupForm {
     iconHover.onHover(
       "hovering", 
       (user:any) => {
-        if(user.id === this.currentHost.id && this.playerManger.isMod(user))
-        {
           console.log("hovering");
           const mat = this.assets.createMaterial("previewMaterial", {color: MRE.Color3.White()})
           this.whiteButtonModel = MRE.Actor.CreateFromGltf(this.assets, {
@@ -204,7 +202,6 @@ export default class SignupForm {
           },
         });         
       }
-        }
     )
     iconHover.onHover(
       "exit", 
@@ -241,6 +238,8 @@ export default class SignupForm {
           Enter your name and click "OK"
           (e.g. David).`, true)
       .then(res => {
+        if(this.playerManger.isMod(user))
+        {
           if(res.submitted && res.text.length > 0){
             MRE.Actor.Create(this.context, {
               actor: {
@@ -261,6 +260,7 @@ export default class SignupForm {
           else{
             // user clicked 'Cancel'
           }
+        }
       })
       .catch(err => {
         console.error(err);
