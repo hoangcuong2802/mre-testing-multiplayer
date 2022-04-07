@@ -177,39 +177,39 @@ export default class SignupForm {
       },
     });
     
-    const iconHover = blackButtonModel.setBehavior(MRE.ButtonBehavior);
-    iconHover.onHover(
-      "hovering", 
-      (user:any) => {
-          console.log("hovering");
-          const mat = this.assets.createMaterial("previewMaterial", {color: MRE.Color3.White()})
-          this.whiteButtonModel = MRE.Actor.CreateFromGltf(this.assets, {
-          uri: `https://cdn-content-ingress.altvr.com/uploads/model/gltf/1972409441848393759/answerButton.glb `,
-          colliderType: "mesh",
-          actor: {
-            name: "Button",
-            transform: {
-              local: {
-                scale: { x: 1, y: 1, z: 1 },
-                position: { x: -1.5, y: 0.3, z: -0.12 },
-              },
-            },
-            appearance: {
-              materialId: mat.id,
-             },
-            parentId: this.eraseButton.id,
-          },
-        });         
-      }
-    )
-    iconHover.onHover(
-      "exit", 
-      (user:any) => {
-        console.log("unhovering");
-        this.whiteButtonModel.destroy(); 
-        delete this.whiteButtonModel;
-      }
-    )
+    // const iconHover = blackButtonModel.setBehavior(MRE.ButtonBehavior);
+    // iconHover.onHover(
+    //   "hovering", 
+    //   (user:any) => {
+    //       console.log("hovering");
+    //       const mat = this.assets.createMaterial("previewMaterial", {color: MRE.Color3.White()})
+    //       this.whiteButtonModel = MRE.Actor.CreateFromGltf(this.assets, {
+    //       uri: `https://cdn-content-ingress.altvr.com/uploads/model/gltf/1972409441848393759/answerButton.glb `,
+    //       colliderType: "mesh",
+    //       actor: {
+    //         name: "Button",
+    //         transform: {
+    //           local: {
+    //             scale: { x: 1, y: 1, z: 1 },
+    //             position: { x: -1.5, y: 0.3, z: -0.12 },
+    //           },
+    //         },
+    //         appearance: {
+    //           materialId: mat.id,
+    //          },
+    //         parentId: this.eraseButton.id,
+    //       },
+    //     });         
+    //   }
+    // )
+    // iconHover.onHover(
+    //   "exit", 
+    //   (user:any) => {
+    //     console.log("unhovering");
+    //     this.whiteButtonModel.destroy(); 
+    //     delete this.whiteButtonModel;
+    //   }
+    // )
   }
 
   private createInterface()
