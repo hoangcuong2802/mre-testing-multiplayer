@@ -1,7 +1,6 @@
 import * as MRE from "@microsoft/mixed-reality-extension-sdk";
 import { Text, User } from "@microsoft/mixed-reality-extension-sdk";
 import dotenv from "dotenv";
-import PlayerManager from './playerManager';
 
 const BUTTON_HEIGHT = 0.6;
 
@@ -23,7 +22,7 @@ export default class SignupForm {
     private infoText : any;
     public whiteButtonModel: MRE.Actor;
     private currentHost: MRE.User = null;
-    private playerManger = new PlayerManager;
+
 
     public cleanup() {
         this.assets.unload();
@@ -238,15 +237,13 @@ export default class SignupForm {
           Enter your name and click "OK"
           (e.g. David).`, true)
       .then(res => {
-        
-        if(this.playerManger.isMod(user))
-        {
           if(res.submitted && res.text.length > 0){
             MRE.Actor.Create(this.context, {
               actor: {
                 name: 'ResultLabel',
                 parentId: this.eraseButton.id,
                 transform: { local: { position: { x: -2.0, y: 0.2, z: -0.1 } } },
+                exclusiveToUser: user.id,
                 text: {
                   contents: res.text,
                   height: .1,
@@ -261,7 +258,6 @@ export default class SignupForm {
           else{
             // user clicked 'Cancel'
           }
-        }
       })
       .catch(err => {
         console.error(err);
@@ -286,14 +282,13 @@ export default class SignupForm {
           Enter your email and click "OK"
           (e.g. abc@gmail.com).`, true)
       .then(res => {
-        for (const p of this.playerManger.playerList) {
-          if (p.id === user.id) {
-              if(res.submitted && res.text.length > 0){
-              MRE.Actor.Create(this.context, {
+          if(res.submitted && res.text.length > 0){
+            MRE.Actor.Create(this.context, {
               actor: {
                 name: 'ResultLabel',
                 parentId: this.eraseButton.id,
                 transform: { local: { position: { x: -2.0, y: -.1, z: -0.1 } } },
+                exclusiveToUser: user.id,
                 text: {
                   contents: res.text,
                   height: .1,
@@ -308,8 +303,7 @@ export default class SignupForm {
           else{
             // user clicked 'Cancel'
           }
-        }
-      }
+
       })
       .catch(err => {
         console.error(err);
@@ -335,13 +329,14 @@ export default class SignupForm {
           Enter your contact number and click "OK"
           (e.g. 084-3214-144).`, true)
       .then(res => {
+
           if(res.submitted && res.text.length > 0){
             MRE.Actor.Create(this.context, {
               actor: {
-                exclusiveToUser: user.id,
                 name: 'ResultLabel',
                 parentId: this.eraseButton.id,
                 transform: { local: { position: { x: -2.0, y: -0.45, z: -0.1  } } },
+                exclusiveToUser: user.id,
                 text: {
                   contents: res.text,
                   height: .1,
