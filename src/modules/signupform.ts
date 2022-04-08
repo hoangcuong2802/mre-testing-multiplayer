@@ -10,6 +10,7 @@ export default class SignupForm {
 
     public expectedResultDescription = "Fill in the signup form";
     private userId: MRE.Guid;
+    private userIds: Set<MRE.Guid>;
     private drawSurface: MRE.Actor;
     private eraseButton: MRE.Actor;
     private surfaceBehavior: MRE.ButtonBehavior;
@@ -38,7 +39,7 @@ export default class SignupForm {
       const root = MRE.Actor.Create(this.context, {
       })
       this.assets = new MRE.AssetContainer(this.context);
-      this.context.onUserJoined(async (user) => {
+      this.context.onUserJoined(async (user: MRE.User) => {
         this.userId = user.id;
       })
       this.createFormSurface(root);
@@ -218,7 +219,6 @@ export default class SignupForm {
   {
     //const answerButtonModel = new MRE.AssetContainer(this.context);
 	  //answerButtonModel.loadGltf('https://cdn-content-ingress.altvr.com/uploads/model/gltf/1972402042165002355/answerButton2.glb', 'mesh');
-
    
     const nameButton = MRE.Actor.CreateFromLibrary(this.context, {
       //resourceId: 'artifact:1579238678213952234',
@@ -231,7 +231,7 @@ export default class SignupForm {
           }
         },
         collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
-        exclusiveToUser:  this.userId,
+        exclusiveToUser:  this.userId
       }
      });
 
@@ -240,6 +240,7 @@ export default class SignupForm {
           Enter your name and click "OK"
           (e.g. David).`, true)
       .then(res => {
+          this.userId = user.id;
           if(res.submitted && res.text.length > 0){
             MRE.Actor.Create(this.context, {
               actor: {
@@ -277,7 +278,7 @@ export default class SignupForm {
           }
         },
         collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
-        exclusiveToUser:  this.userId,
+        exclusiveToUser:  this.userId
       }
      });
 
@@ -286,6 +287,7 @@ export default class SignupForm {
           Enter your email and click "OK"
           (e.g. abc@gmail.com).`, true)
       .then(res => {
+          this.userId = user.id;
           if(res.submitted && res.text.length > 0){
             MRE.Actor.Create(this.context, {
               actor: {
@@ -325,7 +327,7 @@ export default class SignupForm {
           }
         },
         collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
-        exclusiveToUser:  this.userId,
+        exclusiveToUser:  this.userId
       }
     });
 
@@ -334,7 +336,7 @@ export default class SignupForm {
           Enter your contact number and click "OK"
           (e.g. 084-3214-144).`, true)
       .then(res => {
-
+          this.userId = user.id;
           if(res.submitted && res.text.length > 0){
             MRE.Actor.Create(this.context, {
               actor: {

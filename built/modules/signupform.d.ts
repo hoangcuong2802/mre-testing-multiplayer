@@ -4,6 +4,7 @@ export default class SignupForm {
     private assets;
     expectedResultDescription: string;
     private userId;
+    private userIds;
     private drawSurface;
     private eraseButton;
     private surfaceBehavior;

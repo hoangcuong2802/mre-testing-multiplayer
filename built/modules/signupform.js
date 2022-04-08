@@ -215,7 +215,7 @@ class SignupForm {
                     }
                 },
                 collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
-                exclusiveToUser: this.userId,
+                exclusiveToUser: this.userId
             }
         });
         nameButton.setBehavior(MRE.ButtonBehavior).onClick((user) => {
@@ -223,6 +223,7 @@ class SignupForm {
           Enter your name and click "OK"
           (e.g. David).`, true)
                 .then(res => {
+                this.userId = user.id;
                 if (res.submitted && res.text.length > 0) {
                     MRE.Actor.Create(this.context, {
                         actor: {
@@ -259,7 +260,7 @@ class SignupForm {
                     }
                 },
                 collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
-                exclusiveToUser: this.userId,
+                exclusiveToUser: this.userId
             }
         });
         emailButton.setBehavior(MRE.ButtonBehavior).onClick((user) => {
@@ -267,6 +268,7 @@ class SignupForm {
           Enter your email and click "OK"
           (e.g. abc@gmail.com).`, true)
                 .then(res => {
+                this.userId = user.id;
                 if (res.submitted && res.text.length > 0) {
                     MRE.Actor.Create(this.context, {
                         actor: {
@@ -304,7 +306,7 @@ class SignupForm {
                     }
                 },
                 collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
-                exclusiveToUser: this.userId,
+                exclusiveToUser: this.userId
             }
         });
         contactButton.setBehavior(MRE.ButtonBehavior).onClick((user) => {
@@ -312,6 +314,7 @@ class SignupForm {
           Enter your contact number and click "OK"
           (e.g. 084-3214-144).`, true)
                 .then(res => {
+                this.userId = user.id;
                 if (res.submitted && res.text.length > 0) {
                     MRE.Actor.Create(this.context, {
                         actor: {
