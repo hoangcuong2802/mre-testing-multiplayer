@@ -9,7 +9,7 @@ export default class SignupForm {
     private assets: MRE.AssetContainer;
 
     public expectedResultDescription = "Fill in the signup form";
-  
+    private userId: MRE.Guid;
     private drawSurface: MRE.Actor;
     private eraseButton: MRE.Actor;
     private surfaceBehavior: MRE.ButtonBehavior;
@@ -38,7 +38,9 @@ export default class SignupForm {
       const root = MRE.Actor.Create(this.context, {
       })
       this.assets = new MRE.AssetContainer(this.context);
-
+      this.context.onUserJoined(async (user) => {
+        this.userId = user.id;
+      })
       this.createFormSurface(root);
       this.createSubmitButton();
       this.createInstructionText(); 
@@ -162,20 +164,20 @@ export default class SignupForm {
 
   private _whiteButtonModel ()
   {
-    const blackButtonModel = MRE.Actor.CreateFromGltf(this.assets, {
-      uri: `https://cdn-content-ingress.altvr.com/uploads/model/gltf/1972402042165002355/answerButton2.glb `,
-      colliderType: "mesh",
-      actor: {
-        name: "submitButton",
-        transform: {
-          local: {
-            scale: { x: 1, y: 1, z: 1 },
-            position: { x: -1.5, y: 0.3, z: -.1 },
-          },
-        },
-        parentId: this.eraseButton.id,
-      },
-    });
+    // const blackButtonModel = MRE.Actor.CreateFromGltf(this.assets, {
+    //   uri: `https://cdn-content-ingress.altvr.com/uploads/model/gltf/1972402042165002355/answerButton2.glb `,
+    //   colliderType: "mesh",
+    //   actor: {
+    //     name: "submitButton",
+    //     transform: {
+    //       local: {
+    //         scale: { x: 1, y: 1, z: 1 },
+    //         position: { x: -1.5, y: 0.3, z: -.1 },
+    //       },
+    //     },
+    //     parentId: this.eraseButton.id,
+    //   },
+    // });
     
     // const iconHover = blackButtonModel.setBehavior(MRE.ButtonBehavior);
     // iconHover.onHover(
@@ -228,7 +230,7 @@ export default class SignupForm {
             position: { x: 0.7, y: 1.55, z: 0 }
           }
         },
-        collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } }
+        collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
       }
      });
 
@@ -240,16 +242,16 @@ export default class SignupForm {
           if(res.submitted && res.text.length > 0){
             MRE.Actor.Create(this.context, {
               actor: {
+                exclusiveToUser: this.userId,
                 name: 'ResultLabel',
                 parentId: this.eraseButton.id,
                 transform: { local: { position: { x: -2.0, y: 0.2, z: -0.1 } } },
-                exclusiveToUser: user.id,
                 text: {
                   contents: res.text,
                   height: .1,
                   anchor: MRE.TextAnchorLocation.MiddleLeft,
                   color: MRE.Color3.White()
-                }
+                },
               }
             })
             //this.infoText.text.contents = this.resultMessageFor(res.text);
@@ -273,7 +275,7 @@ export default class SignupForm {
             position: { x: 0.7, y: 1.225, z: 0 }
           }
         },
-        collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } }
+        collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
       }
      });
 
@@ -285,16 +287,16 @@ export default class SignupForm {
           if(res.submitted && res.text.length > 0){
             MRE.Actor.Create(this.context, {
               actor: {
+                exclusiveToUser: this.userId,
                 name: 'ResultLabel',
                 parentId: this.eraseButton.id,
                 transform: { local: { position: { x: -2.0, y: -.1, z: -0.1 } } },
-                exclusiveToUser: user.id,
                 text: {
                   contents: res.text,
                   height: .1,
                   anchor: MRE.TextAnchorLocation.MiddleLeft,
                   color: MRE.Color3.White()                  
-                }
+                },
               }
             })
             //this.infoText.text.contents = this.resultMessageFor(res.text);
@@ -320,7 +322,7 @@ export default class SignupForm {
             position: { x: 0.7, y: 0.9, z: 0 }
           }
         },
-        collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } }
+        collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
       }
     });
 
@@ -333,16 +335,16 @@ export default class SignupForm {
           if(res.submitted && res.text.length > 0){
             MRE.Actor.Create(this.context, {
               actor: {
+                exclusiveToUser:  this.userId,
                 name: 'ResultLabel',
                 parentId: this.eraseButton.id,
                 transform: { local: { position: { x: -2.0, y: -0.45, z: -0.1  } } },
-                exclusiveToUser: user.id,
                 text: {
                   contents: res.text,
                   height: .1,
                   anchor: MRE.TextAnchorLocation.MiddleLeft,
                   color: MRE.Color3.White()
-                }
+                },
               }
             })
             //this.infoText.text.contents = this.resultMessageFor(res.text);

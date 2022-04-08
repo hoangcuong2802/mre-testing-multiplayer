@@ -1186,19 +1186,9 @@
         "signature": "2cba9752a0198d6c9cc96bc63463020f6a00de7d8f63cfd6a5eb35975662b09a",
         "affectsGlobalScope": false
       },
-      "./src/modules/player.ts": {
-        "version": "4f9733ca76882050f107e67b03cf4102b1e80ee84c3f851d7936c5a01e195a9f",
-        "signature": "5557751099a6be855f46fbc007911a4ee36dcb3dcbb80954041082f0738a2e81",
-        "affectsGlobalScope": false
-      },
-      "./src/modules/playermanager.ts": {
-        "version": "47d46489e12fff8598de41f0219e5a5abd0b1db17c57d1eca3c65f5fcbc6a0f2",
-        "signature": "7b801c3c5586df37557cd21779817d9d5beea289b6ef99eefe2ed18920b58eed",
-        "affectsGlobalScope": false
-      },
       "./src/modules/signupform.ts": {
-        "version": "cc39f7b88fbba714d6b1d68bb8a397661cd2380f3c7df3d91a48fde649dbb575",
-        "signature": "83ad116f0b8e9960b44099e807a8c42777bf756e6f13aab7d4bb4412265ca7df",
+        "version": "f84baa83f59b37d74790298a8f7dbadf54f96197b06605a26020c5ff07ece505",
+        "signature": "046f41870b7fc393a8765c787fc90a50b05c61f459a1c3266f041774b2c68889",
         "affectsGlobalScope": false
       },
       "./src/app.ts": {
@@ -2051,17 +2041,9 @@
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts",
         "./src/modules/signupform.ts"
       ],
-      "./src/modules/player.ts": [
-        "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts"
-      ],
-      "./src/modules/playermanager.ts": [
-        "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts",
-        "./src/modules/player.ts"
-      ],
       "./src/modules/signupform.ts": [
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts",
-        "./node_modules/@types/dotenv/index.d.ts",
-        "./src/modules/playermanager.ts"
+        "./node_modules/@types/dotenv/index.d.ts"
       ],
       "./src/player.ts": [
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts"
@@ -2856,13 +2838,6 @@
       "./src/app.ts": [
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts"
       ],
-      "./src/modules/player.ts": [
-        "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts"
-      ],
-      "./src/modules/playermanager.ts": [
-        "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts",
-        "./src/modules/player.ts"
-      ],
       "./src/modules/signupform.ts": [
         "./node_modules/@microsoft/mixed-reality-extension-sdk/built/index.d.ts"
       ],
@@ -3119,8 +3094,6 @@
       "./node_modules/typescript/lib/lib.es5.d.ts",
       "./node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "./src/app.ts",
-      "./src/modules/player.ts",
-      "./src/modules/playermanager.ts",
       "./src/modules/signupform.ts",
       "./src/player.ts",
       "./src/playermanager.ts",

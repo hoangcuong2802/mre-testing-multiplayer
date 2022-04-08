@@ -3,6 +3,7 @@ export default class SignupForm {
     private context;
     private assets;
     expectedResultDescription: string;
+    private userId;
     private drawSurface;
     private eraseButton;
     private surfaceBehavior;
@@ -15,7 +16,6 @@ export default class SignupForm {
     private infoText;
     whiteButtonModel: MRE.Actor;
     private currentHost;
-    private playerManger;
     cleanup(): void;
     constructor(context: MRE.Context);
     started(): Promise<void>;
