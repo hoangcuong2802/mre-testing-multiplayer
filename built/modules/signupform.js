@@ -215,6 +215,7 @@ class SignupForm {
                     }
                 },
                 collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
+                exclusiveToUser: this.userId,
             }
         });
         nameButton.setBehavior(MRE.ButtonBehavior).onClick((user) => {
@@ -258,6 +259,7 @@ class SignupForm {
                     }
                 },
                 collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
+                exclusiveToUser: this.userId,
             }
         });
         emailButton.setBehavior(MRE.ButtonBehavior).onClick((user) => {
@@ -302,6 +304,7 @@ class SignupForm {
                     }
                 },
                 collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
+                exclusiveToUser: this.userId,
             }
         });
         contactButton.setBehavior(MRE.ButtonBehavior).onClick((user) => {

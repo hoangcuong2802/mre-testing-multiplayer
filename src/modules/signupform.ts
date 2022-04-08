@@ -231,6 +231,7 @@ export default class SignupForm {
           }
         },
         collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
+        exclusiveToUser:  this.userId,
       }
      });
 
@@ -276,6 +277,7 @@ export default class SignupForm {
           }
         },
         collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
+        exclusiveToUser:  this.userId,
       }
      });
 
@@ -323,6 +325,7 @@ export default class SignupForm {
           }
         },
         collider: { geometry: { shape: MRE.ColliderType.Box, size: { x: 0.5, y: 0.5, z: 0.5 } } },
+        exclusiveToUser:  this.userId,
       }
     });
 
